@@ -1,59 +1,85 @@
-// assets
-import {
-  AppstoreAddOutlined,
-  AntDesignOutlined,
-  BarcodeOutlined,
-  BgColorsOutlined,
-  FontSizeOutlined,
-  LoadingOutlined
-} from '@ant-design/icons';
+import { Dashboard, Community, Products, Coupons, Vouchers, Sales, Customer, Reports, Offer } from '../assets/svgs';
 
-// icons
 const icons = {
-  FontSizeOutlined,
-  BgColorsOutlined,
-  BarcodeOutlined,
-  AntDesignOutlined,
-  LoadingOutlined,
-  AppstoreAddOutlined
+  Dashboard,
+  Community,
+  Products,
+  Coupons,
+  Vouchers,
+  Sales,
+  Customer,
+  Reports,
+  Offer
 };
-
-// ==============================|| MENU ITEMS - UTILITIES ||============================== //
 
 const utilities = {
   id: 'utilities',
-  title: 'Utilities',
+  // title: 'Utilities',
   type: 'group',
   children: [
     {
-      id: 'util-typography',
-      title: 'Typography',
+      id: '1',
+      title: 'Dashboard',
       type: 'item',
-      url: '/typography',
-      icon: icons.FontSizeOutlined
+      url: '/',
+      icon: icons.Dashboard
     },
     {
-      id: 'util-color',
-      title: 'Color',
+      id: '2',
+      title: 'Community Approval',
       type: 'item',
-      url: '/color',
-      icon: icons.BgColorsOutlined
+      url: '/',
+      icon: icons.Community
     },
     {
-      id: 'util-shadow',
-      title: 'Shadow',
+      id: '3',
+      title: 'Products',
       type: 'item',
-      url: '/shadow',
-      icon: icons.BarcodeOutlined
+      url: '/',
+      icon: icons.Products
     },
     {
-      id: 'ant-icons',
-      title: 'Ant Icons',
+      id: '4',
+      title: 'Coupons',
       type: 'item',
-      url: '/icons/ant',
-      icon: icons.AntDesignOutlined,
-      breadcrumbs: false
-    }
+      url: '/',
+      icon: icons.Coupons
+    },
+    {
+      id: '5',
+      title: 'Vouchers',
+      type: 'item',
+      url: '/',
+      icon: icons.Vouchers
+    },
+    {
+      id: '6',
+      title: 'Sales',
+      type: 'item',
+      url: '/',
+      icon: icons.Sales
+    },
+    {
+      id: '7',
+      title: 'Customer Details',
+      type: 'item',
+      url: '/',
+      icon: icons.Customer
+    },
+    {
+      id: '8',
+      title: 'Reports & Analysis',
+      type: 'item',
+      url: '/',
+      icon: icons.Reports
+    },
+    {
+      id: '9',
+      title: 'Birthday Special Offer',
+      type: 'item',
+      url: '/',
+      icon: icons.Offer
+    },
   ]
 };
 

@@ -1,8 +1,5 @@
-// material-ui
 import { styled } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
-
-// project import
 import { drawerWidth } from '../../../config';
 
 
@@ -23,11 +20,11 @@ const closedMixin = (theme) => ({
     duration: theme.transitions.duration.leavingScreen
   }),
   overflowX: 'hidden',
-  width: 0,
+  width: 80,
+  paddingRight:3.2,
   borderRight: 'none',
 });
 
-// ==============================|| DRAWER - MINI STYLED ||============================== //
 
 const MiniDrawerStyled = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
   width: drawerWidth,

@@ -1,21 +1,13 @@
 import PropTypes from 'prop-types';
-
-// material-ui
 import { alpha, styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
-// third-party
-// import SimpleBar from 'simplebar-react';
-// import { BrowserView, MobileView } from 'react-device-detect';
-
-// root style
 const RootStyle = styled(Box)({
   flexGrow: 1,
   height: '100%',
   overflow: 'hidden'
 });
 
-// scroll bar wrapper
 const SimpleBarStyle = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
   '& .simplebar-scrollbar': {
@@ -37,21 +29,14 @@ const SimpleBarStyle = styled(Box)(({ theme }) => ({
   }
 }));
 
-// ==============================|| SIMPLE SCROLL BAR  ||============================== //
-
 export default function SimpleBarScroll({ children, sx, ...other }) {
   return (
     <>
       <RootStyle>
-        <SimpleBarStyle timeout={500} clickOnTrack={false} sx={sx} {...other}>
+        <SimpleBarStyle timeout={500} sx={sx} {...other}>
           {children}
         </SimpleBarStyle>
       </RootStyle>
-      {/* <MobileView> */}
-        {/* <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
-          {children}
-        </Box> */}
-      {/* </MobileView> */}
     </>
   );
 }

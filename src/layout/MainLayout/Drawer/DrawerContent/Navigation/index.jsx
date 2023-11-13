@@ -1,11 +1,7 @@
-// material-ui
 import { Box, Typography } from '@mui/material';
-
-// project import
 import NavGroup from './NavGroup';
 import utilities from '../../../../../menu-items/utilities';
 
-// ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
 const Navigation = () => {
 

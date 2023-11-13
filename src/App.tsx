@@ -1,14 +1,18 @@
 import { Routes,Route } from 'react-router-dom';
-// import MainLayout from 'layout/MainLayout/index';
 import ThemeCustomization from './themes';
-// import Jaynth from './Jaynth';
+import Jaynth from './Jaynth';
 import MainLayout from './layout/MainLayout';
+import React from 'react';
 
 const App = () => {
 
   return(
     <ThemeCustomization>
-      <MainLayout/>
+      <Routes>
+        <Route  element={<MainLayout/>}>
+          <Route path='/' element={<Jaynth/>}/>
+        </Route>
+      </Routes>
   </ThemeCustomization>
   )
 }

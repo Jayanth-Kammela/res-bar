@@ -2,23 +2,15 @@ import PropTypes from 'prop-types';
 import { forwardRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
-// material-ui
-import { useTheme } from '@mui/material/styles';
-import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-
-// project import
+import { ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { activeItem } from '../../../../../store/reducers/menu';
 
-
-// ==============================|| NAVIGATION - LIST ITEM ||============================== //
-
 const NavItem = ({ item, level }) => {
-  const theme = useTheme();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
 
   const { drawerOpen, openItem } = useSelector((state) => state.menu);
+  console.log(drawerOpen);
 
   let itemTarget = '_self';
   if (item.target) {
@@ -38,16 +30,11 @@ const NavItem = ({ item, level }) => {
   const itemIcon = item.icon ? <Icon style={{ fontSize: drawerOpen ? '1rem' : '1.25rem' }} /> : false;
 
   const isSelected = openItem.findIndex((id) => id === item.id) > -1;
-  // active menu item on page load
   useEffect(() => {
     if (pathname.includes(item.url)) {
       dispatch(activeItem({ openItem: [item.id] }));
     }
-    // eslint-disable-next-line
   }, [pathname]);
-
-  const textColor = 'text.primary';
-  const iconSelectedColor = 'primary.main';
 
   return (
     <ListItemButton
@@ -56,32 +43,46 @@ const NavItem = ({ item, level }) => {
       onClick={() => itemHandler(item.id)}
       selected={isSelected}
       sx={{
+        margin:1,
+        bgcolor: '#101928',
+        borderRadius: '4px',
+        color:'#FFFF',
+        my: 1,
         zIndex: 1201,
         pl: drawerOpen ? `${level * 28}px` : 1.5,
         py: !drawerOpen && level === 1 ? 1.25 : 1,
         ...(drawerOpen && {
           '&:hover': {
-            bgcolor: 'primary.lighter'
+            bgcolor: '#101928',
+            borderRadius: '4px',
+            color:'#ffff'
           },
           '&.Mui-selected': {
-            bgcolor: 'primary.lighter',
-            borderRight: `2px solid ${theme.palette.primary.main}`,
-            color: iconSelectedColor,
+            borderRadius: '4px',
+            bgcolor: '#010101',
+            color: '#FFFFFF',
             '&:hover': {
-              color: iconSelectedColor,
-              bgcolor: 'primary.lighter'
+              borderRadius: '4px',
+              color: '#FFFF',
+              // bgcolor: '#101928'
             }
           }
         }),
         ...(!drawerOpen && {
           '&:hover': {
-            bgcolor: 'transparent'
+            bgcolor: '#101928',
+            borderRadius: '4px',
+            color:'#ffff'
           },
           '&.Mui-selected': {
+            borderRadius: '4px',
+            bgcolor: '#010101',
+            color: '#FFFFFF',
             '&:hover': {
-              bgcolor: 'transparent'
-            },
-            bgcolor: 'transparent'
+              borderRadius: '4px',
+              color: '#FFFF',
+              bgcolor: '#010101'
+            }
           }
         })
       }}
@@ -90,7 +91,7 @@ const NavItem = ({ item, level }) => {
         <ListItemIcon
           sx={{
             minWidth: 28,
-            color: isSelected ? iconSelectedColor : textColor,
+            color: '#FFFF',
             ...(!drawerOpen && {
               borderRadius: 1.5,
               width: 36,
@@ -98,16 +99,21 @@ const NavItem = ({ item, level }) => {
               alignItems: 'center',
               justifyContent: 'center',
               '&:hover': {
-                bgcolor: 'secondary.lighter'
+                bgcolor: '#101928',
+                color: '#FFFF'
               }
             }),
             ...(!drawerOpen &&
               isSelected && {
-                bgcolor: 'primary.lighter',
-                '&:hover': {
-                  bgcolor: 'primary.lighter'
-                }
-              })
+              borderRadius: '4px',
+              background: '#010101',
+              color: '#FFFFFF',
+              '&:hover': {
+                borderRadius: '4px',
+                background: '#010101',
+                color: '#FFFFFF',
+              }
+            })
           }}
         >
           {itemIcon}
@@ -115,14 +121,18 @@ const NavItem = ({ item, level }) => {
       )}
       {(drawerOpen || (!drawerOpen && level !== 1)) && (
         <ListItemText
-          primary={
-            <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
-              {item.title}
-            </Typography>
-          }
-        />
+        primary={
+          <Typography variant="p" sx={{ color: '#FFFF',
+          fontSize: '14px',
+          fontStyle: 'normal',
+          fontWeight: 500,
+          lineHeight: '145%',}}>
+            {item.title}
+          </Typography>
+        }
+      />
       )}
-      {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
+      {/* {(drawerOpen || (!drawerOpen && level !== 1)) && item.chip && (
         <Chip
           color={item.chip.color}
           variant={item.chip.variant}
@@ -130,7 +140,7 @@ const NavItem = ({ item, level }) => {
           label={item.chip.label}
           avatar={item.chip.avatar && <Avatar>{item.chip.avatar}</Avatar>}
         />
-      )}
+      )} */}
     </ListItemButton>
   );
 };
